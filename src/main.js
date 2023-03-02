@@ -1,16 +1,16 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import {createRouter, createWebHistory} from "vue-router"
-import HomeForm from '@/components/LogForm.vue'
 import HomePage from '@/views/HomePage.vue'
 import AddPage from '@/views/AddPage.vue'
 import './assets/tailwind.css'
+import LogPage from "@/views/LogPage";
 
 const routes = [
     {
         path: '/',
         name: 'Login',
-        component: HomeForm
+        component: LogPage
     },
     {
         path: '/home',

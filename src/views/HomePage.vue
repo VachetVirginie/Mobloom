@@ -2,7 +2,7 @@
   <HeroSection />
 </template>
 <script>
-import HeroSection from "@/components/HeroSection";
+import HeroSection from "@/components/Hero/HeroSection";
 export default {
   components: {HeroSection}
 }
