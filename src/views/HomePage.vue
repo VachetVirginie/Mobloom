@@ -1,9 +1,9 @@
 <template>
-  <TotoVue />
+  <HeroSection />
 </template>
 <script>
-import TotoVue from "@/components/TotoVue";
+import HeroSection from "@/components/HeroSection";
 export default {
-  components: {TotoVue}
+  components: {HeroSection}
 }
 </script>
