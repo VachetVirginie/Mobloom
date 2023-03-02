@@ -1,17 +1,36 @@
 <template>
-  <section class="text-gray-200 body-font bg-primary sm:h-full h-screen py-4">
-    <div class="container px-5 py-24 mx-auto flex">
-    <div v-for="data in datas" :key="data" class="p-2 lg:w-1/3 md:w-1/2 w-full">
-      <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-          <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/80x80">
-          <div class="flex-grow">
-            <h2 class="text-gray-900 title-font font-medium">{{ data.siteTitle }}</h2>
-            <p class="text-gray-500">{{ data.auth }}</p>
-            <p class="text-gray-500">{{ data.psw }}</p>
-          </div>
-        </div>
-      </div>
-      </div>
+  <section class="text-gray-200 body-font bg-primary h-screen py-4 px-2">
+    <h1 class="text-center text-4xl mb-4">Mes datas</h1>
+    <div class="relative overflow-x-auto rounded">
+      <table class="w-full text-sm text-left text-gray-500">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-200">
+        <tr>
+          <th scope="col" class="px-6 py-3">
+            Nom
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Identifiant
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Mot de passe
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="data in datas" :key="data" class="bg-white border-b">
+          <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+            {{ data.siteTitle }}
+          </th>
+          <td class="px-6 py-4">
+            {{ data.auth }}
+          </td>
+          <td class="px-6 py-4">
+            {{ data.psw }}
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
   </section>
 </template>
 
