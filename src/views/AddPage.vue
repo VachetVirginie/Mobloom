@@ -42,7 +42,11 @@ function createDoc() {
       auth: identifiant.value,
       psw: password.value,
       user: auth.currentUser.email
-    });
+    }
+    )
+    .then(() => {
+      window.location.href = "/home";
+    })
   } catch (e) {
     console.error("Error adding document: ", e);
   }

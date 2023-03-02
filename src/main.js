@@ -5,6 +5,7 @@ import HomePage from '@/views/HomePage.vue'
 import AddPage from '@/views/AddPage.vue'
 import './assets/tailwind.css'
 import LogPage from "@/views/LogPage";
+import DatasPage from "@/views/DatasPage";
 
 const routes = [
     {
@@ -21,6 +22,11 @@ const routes = [
         path: '/add',
         name: 'Add',
         component: AddPage
+    },
+    {
+        path: '/datas',
+        name: 'Datas',
+        component: DatasPage
     }
 ]
 const router = createRouter({

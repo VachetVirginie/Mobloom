@@ -7,9 +7,9 @@
       <div class="text-center lg:w-2/3 w-full">
         <h1 class="title-font sm:text-4xl text-4xl mb-4 font-semibold text-white">Mobloom</h1>
         <p class="mb-8 leading-relaxed font-medium">Gestionnaire de mot de passe</p>
-        <div class="flex justify-center">
-          <button @click="goToAddPage" class="inline-flex text-white bg-pink  border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded text-lg">Ajouter</button>
-          <button @click="getDatas" class="ml-4 inline-flex text-white bg-black border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">Voir</button>
+        <div class="flex justify-center gap-4">
+          <button @click="goToAddPage" class="inline-flex text-white bg-pink  border-0 py-2 px-6 focus:outline-none rounded text-lg">Ajouter</button>
+          <button @click="goToDatasPage" class="inline-flex text-white bg-black border-0 py-2 px-6 focus:outline-none rounded text-lg">Voir</button>
         </div>
       </div>
     </div>
@@ -22,14 +22,8 @@ import Illustration from "@/components/Hero/passwordIllustration.vue";
 function goToAddPage() {
   window.location.href = "/add";
 }
-// async function getDatas() {
-//   const querySnapshot = await getDocs(collection(db, "users"));
-//   querySnapshot.forEach((doc) => {
-//     if (doc.data().user === auth.currentUser.email) {
-//       console.log(doc.data());
-//     }
-//   });
-// }
 
-
+function goToDatasPage() {
+  window.location.href = "/datas";
+}
 </script>
