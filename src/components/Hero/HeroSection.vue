@@ -1,5 +1,5 @@
 <template>
-  <section class="text-gray-200 body-font bg-primary sm:h-full h-screen py-4">
+  <section class="text-gray-200 body-font py-4">
     <div class="container mx-auto flex items-center justify-center flex-col">
       <div class="lg:w-2/6 md:w-2x/6 w-5/6 mb-2 object-cover object-center rounded" alt="hero">
         <Illustration />

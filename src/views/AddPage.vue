@@ -1,5 +1,5 @@
 <template>
-  <section class="text-gray-200 body-font bg-primary">
+  <section class="text-gray-200 body-font">
     <AlertBase v-if="action.isActive" :title="action.title" :text="action.text" :color="action.color"/>
     <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
       <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-white">Ajouter un element</h1>
@@ -15,7 +15,12 @@
         </div>
         <div>
           <label for="password" class="block mb-2 text-sm font-medium text-gray-900 relative">
-            <div class="pb-2">Password</div>
+            <div class="pb-2 flex gap-2">
+              Password
+              <svg @click="genPassword" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+              </svg>
+            </div>
               <svg @click="show = !show" v-if="show" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 absolute right-3 mt-2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -53,6 +58,18 @@ const action = ref({
   color: ""
 });
 const show = ref(true);
+
+
+const genPassword = () => {
+  const chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const passwordLength = 12;
+  let psw = "";
+  for (var i = 0; i <= passwordLength; i++) {
+    let randomNumber = Math.floor(Math.random() * chars.length);
+    psw += chars.substring(randomNumber, randomNumber +1);
+  }
+  password.value = psw;
+}
 
 const createDoc = () => {
   try {

@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-primary">
+  <section>
     <AlertBase v-if="action.isActive" :title="action.title" :text="action.text" :color="action.color"/>
     <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen sm:h-full h-screen lg:py-0">
       <a href="#" class="flex items-center mb-6 text-4xl font-semibold text-secondary">
