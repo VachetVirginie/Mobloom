@@ -16,8 +16,8 @@
               <input v-model="password" type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-grey dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
             </div>
             <div class="flex justify-center gap-4">
-              <ButtonBase @click="loginUser" color="pink" text="Sign in"/>
-              <ButtonBase @click="createUser" color="pink" text="Register"/>
+              <ButtonBase @click="loginUser" color="bg-pink" text="Sign in"/>
+              <ButtonBase @click="createUser" color="bg-pink" text="Register"/>
             </div>
         </div>
       </div>

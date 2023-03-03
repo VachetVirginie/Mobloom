@@ -17,7 +17,7 @@
           <input v-model="password" type="password" name="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 bg-grey placeholder-gray-500" placeholder="********" required="">
         </div>
         <div class="text-center">
-          <ButtonBase @click="createDoc" color="pink" text="Ajouter"/>
+          <ButtonBase @click="createDoc" color="bg-pink" text="Ajouter"/>
         </div>
       </div>
     </div>
