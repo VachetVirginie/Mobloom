@@ -1,11 +1,10 @@
 <template>
   <div>
+    <HeaderBase/>
     <RouterView />
   </div>
 </template>
 
-<script>
-export default {
-  name: 'App',
-}
+<script setup>
+import HeaderBase from "@/components/Base/HeaderBase";
 </script>

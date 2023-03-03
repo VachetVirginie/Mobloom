@@ -7,10 +7,6 @@
       <div class="text-center lg:w-2/3 w-full">
         <h1 class="title-font sm:text-4xl text-4xl mb-4 font-semibold text-white">Mobloom</h1>
         <p class="mb-8 leading-relaxed font-medium">Gestionnaire de mot de passe</p>
-        <div class="flex justify-center gap-4">
-          <ButtonBase @click="goTo('/add')" color="bg-pink" text="Ajouter"/>
-          <ButtonBase @click="goTo('/datas')" color="bg-black" text="Voir"/>
-        </div>
       </div>
     </div>
   </section>
@@ -18,9 +14,4 @@
 
 <script setup>
 import Illustration from "@/components/Hero/passwordIllustration.vue";
-import ButtonBase from "@/components/Base/ButtonBase";
-
-const goTo = (path) => {
-  window.location.href = path;
-}
 </script>

@@ -1,11 +1,13 @@
 import { createApp } from 'vue'
+import { auth } from "@/firebase";
+import { onAuthStateChanged } from "firebase/auth";
+import { createRouter, createWebHistory } from "vue-router"
 import App from './App.vue'
-import {createRouter, createWebHistory} from "vue-router"
 import HomePage from '@/views/HomePage.vue'
 import AddPage from '@/views/AddPage.vue'
-import './assets/tailwind.css'
 import LogPage from "@/views/LogPage";
 import DatasPage from "@/views/DatasPage";
+import './assets/tailwind.css'
 
 const routes = [
     {
@@ -16,7 +18,10 @@ const routes = [
     {
         path: '/home',
         name: 'Home',
-        component: HomePage
+        component: HomePage,
+        meta: {
+            autenticado: true
+        }
     },
     {
         path: '/add',
@@ -33,6 +38,13 @@ const router = createRouter({
     history: createWebHistory(),
     routes
 });
+
+onAuthStateChanged(auth, (user) => {
+    if (!user) {
+        router.push('/');
+    }
+});
+
 const app = createApp(App);
 app.use(router);
 
