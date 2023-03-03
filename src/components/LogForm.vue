@@ -1,5 +1,6 @@
 <template>
   <section class="bg-primary">
+    <AlertBase v-if="action.isActive" :title="action.title" :text="action.text" :color="action.color"/>
     <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen sm:h-full h-screen lg:py-0">
       <a href="#" class="flex items-center mb-6 text-4xl font-semibold text-secondary">
         <img class="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo">
@@ -30,17 +31,32 @@ import { ref } from 'vue';
 import { auth } from "@/firebase";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import ButtonBase from "@/components/Base/ButtonBase";
+import AlertBase from "@/components/Base/AlertBase";
 
 let user = ref(""), password = ref("");
+
+const action = ref({
+  isActive: false,
+  title: "",
+  text: "",
+  color: ""
+});
 
 function createUser() {
   createUserWithEmailAndPassword(auth, user.value, password.value)
       .then(() => {
-        window.location.href = "/home";
+        setTimeout(() => {
+          window.location.href = "/home";
+        }, 1000);
       })
       .catch((error) => {
         let errorType = error.message === 'Firebase: Error (auth/email-already-in-use).' ? "L'utilisateur existe déjà" : "Une erreur est survenue"
-        console.log(errorType)
+        action.value = {
+          isActive: true,
+          title: "Erreur",
+          text: errorType,
+          color: "bg-red-500"
+        }
       });
 }
 function loginUser() {
@@ -48,11 +64,13 @@ function loginUser() {
       .then(() => {
         window.location.href = "/home";
       })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(error.message.includes('auth/wrong'))
-        console.log(errorCode, errorMessage)
+      .catch(() => {
+        action.value = {
+          isActive: true,
+          title: "Erreur",
+          text: "Mail ou mot de passe incorrect",
+          color: "text-red-500"
+        }
       });
 }
 </script>

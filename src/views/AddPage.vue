@@ -1,5 +1,6 @@
 <template>
   <section class="text-gray-200 body-font bg-primary">
+    <AlertBase v-if="action.isActive" :title="action.title" :text="action.text" :color="action.color"/>
     <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
       <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-white">Ajouter un element</h1>
       <div class="w-full bg-secondary rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:border-gray-700">
@@ -31,12 +32,19 @@ import { doc, setDoc } from "firebase/firestore";
 import {db} from "@/firebase";
 import { auth } from "@/firebase";
 import ButtonBase from "@/components/Base/ButtonBase";
+import AlertBase from "@/components/Base/AlertBase";
 
 const name = ref("");
 const identifiant = ref("");
 const password = ref("");
+const action = ref({
+  isActive: false,
+  title: "",
+  text: "",
+  color: ""
+});
 
-function createDoc() {
+const createDoc = () => {
   try {
     setDoc(doc(db, "users",  (Math.random() + 1).toString(36).substring(4)), {
       siteTitle: name.value,
@@ -46,10 +54,24 @@ function createDoc() {
     }
     )
     .then(() => {
-      window.location.href = "/home";
+      action.value = {
+        isActive: true,
+        title: "Ajouté",
+        text: "Votre element a été ajouté avec succès",
+        color: "text-green-500"
+      }
+      setTimeout(() => {
+        window.location.href = "/home";
+      }, 1000);
     })
   } catch (e) {
     console.error("Error adding document: ", e);
+    action.value = {
+      isActive: true,
+      title: "Erreur",
+      text: "Une erreur est survenue lors de l'ajout de votre element",
+      color: "text-red-500"
+    }
   }
 }
 </script>
