@@ -8,8 +8,8 @@
         <h1 class="title-font sm:text-4xl text-4xl mb-4 font-semibold text-white">Mobloom</h1>
         <p class="mb-8 leading-relaxed font-medium">Gestionnaire de mot de passe</p>
         <div class="flex justify-center gap-4">
-          <button @click="goToAddPage" class="inline-flex text-white bg-pink  border-0 py-2 px-6 focus:outline-none rounded text-lg">Ajouter</button>
-          <button @click="goToDatasPage" class="inline-flex text-white bg-black border-0 py-2 px-6 focus:outline-none rounded text-lg">Voir</button>
+          <ButtonBase @click="goToAddPage" color="pink" text="Ajouter"/>
+          <ButtonBase @click="goToDatasPage" color="black" text="Voir"/>
         </div>
       </div>
     </div>
@@ -18,6 +18,7 @@
 
 <script setup>
 import Illustration from "@/components/Hero/passwordIllustration.vue";
+import ButtonBase from "@/components/Base/ButtonBase";
 
 function goToAddPage() {
   window.location.href = "/add";

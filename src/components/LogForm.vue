@@ -15,9 +15,9 @@
               <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
               <input v-model="password" type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-grey dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
             </div>
-            <div class="flex flex-row gap-2">
-              <button @click="loginUser" class="w-full text-white bg-pink hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign in</button>
-              <button @click="createUser" class="w-full text-white bg-pink hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Register</button>
+            <div class="flex justify-center gap-4">
+              <ButtonBase @click="loginUser" color="pink" text="Sign in"/>
+              <ButtonBase @click="createUser" color="pink" text="Register"/>
             </div>
         </div>
       </div>
@@ -27,8 +27,10 @@
 
 <script setup>
 import { ref } from 'vue';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/firebase";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import ButtonBase from "@/components/Base/ButtonBase";
+
 let user = ref(""), password = ref("");
 
 function createUser() {
@@ -49,6 +51,7 @@ function loginUser() {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        console.log(error.message.includes('auth/wrong'))
         console.log(errorCode, errorMessage)
       });
 }

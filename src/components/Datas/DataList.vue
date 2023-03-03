@@ -42,12 +42,11 @@ import {onMounted, ref} from "vue";
 
 const datas = ref([]);
 
-async function getDatas() {
+const getDatas = async () => {
   const querySnapshot = await getDocs(collection(db, "users"));
   querySnapshot.forEach((doc) => {
     if (doc.data().user === auth.currentUser.email) {
       datas.value.push(doc.data());
-      console.log(datas.value)
     }
   });
 }
