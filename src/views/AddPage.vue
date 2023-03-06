@@ -17,7 +17,7 @@
           <label for="password" class="block mb-2 text-sm font-medium text-gray-900 relative">
             <div class="pb-2 flex gap-2">
               Password
-              <svg @click="genPassword" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+              <svg @click="onGeneratePassword" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
               </svg>
             </div>
@@ -45,12 +45,14 @@ import { ref } from "vue";
 import { doc, setDoc } from "firebase/firestore";
 import {db} from "@/firebase";
 import { auth } from "@/firebase";
+import usePassword from "@/composables/usePassword";
 import ButtonBase from "@/components/Base/ButtonBase";
 import AlertBase from "@/components/Base/AlertBase";
 
+const { generatePassword } = usePassword();
 const name = ref("");
-const identifiant = ref("");
 const password = ref("");
+const identifiant = ref("");
 const action = ref({
   isActive: false,
   title: "",
@@ -59,16 +61,8 @@ const action = ref({
 });
 const show = ref(true);
 
-
-const genPassword = () => {
-  const chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const passwordLength = 12;
-  let psw = "";
-  for (var i = 0; i <= passwordLength; i++) {
-    let randomNumber = Math.floor(Math.random() * chars.length);
-    psw += chars.substring(randomNumber, randomNumber +1);
-  }
-  password.value = psw;
+const onGeneratePassword = () => {
+  generatePassword(password);
 }
 
 const createDoc = () => {
