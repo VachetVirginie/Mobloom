@@ -6,7 +6,7 @@ import App from './App.vue'
 import HomePage from '@/views/HomePage.vue'
 import AddPage from '@/views/AddPage.vue'
 import LogPage from "@/views/LogPage";
-import DatasPage from "@/views/DatasPage";
+import DatasPage from "@/views/StrongboxPage";
 import './assets/tailwind.css'
 
 const routes = [

@@ -17,8 +17,8 @@
               <input v-model="password" type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-grey dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
             </div>
             <div class="flex justify-center gap-4">
-              <ButtonBase @click="loginUser" color="bg-pink" text="Sign in"/>
-              <ButtonBase @click="createUser" color="bg-pink" text="Register"/>
+              <ButtonBase @click="onLoginUser" color="bg-pink" text="Sign in"/>
+              <ButtonBase @click="onCreateUser" color="bg-pink" text="Register"/>
             </div>
         </div>
       </div>
@@ -27,50 +27,19 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { auth } from "@/firebase";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import useFirebase from "@/composables/useFirebase";
 import ButtonBase from "@/components/Base/ButtonBase";
 import AlertBase from "@/components/Base/AlertBase";
 
-let user = ref(""), password = ref("");
+const { createUser, loginUser, password, user, action } = useFirebase();
 
-const action = ref({
-  isActive: false,
-  title: "",
-  text: "",
-  color: ""
-});
+const onCreateUser = () => {
+  createUser();
+}
 
-function createUser() {
-  createUserWithEmailAndPassword(auth, user.value, password.value)
-      .then(() => {
-        setTimeout(() => {
-          window.location.href = "/home";
-        }, 1000);
-      })
-      .catch((error) => {
-        let errorType = error.message === 'Firebase: Error (auth/email-already-in-use).' ? "L'utilisateur existe déjà" : "Une erreur est survenue"
-        action.value = {
-          isActive: true,
-          title: "Erreur",
-          text: errorType,
-          color: "bg-red-500"
-        }
-      });
+const onLoginUser = () => {
+  loginUser();
 }
-function loginUser() {
-  signInWithEmailAndPassword(auth, user.value, password.value)
-      .then(() => {
-        window.location.href = "/home";
-      })
-      .catch(() => {
-        action.value = {
-          isActive: true,
-          title: "Erreur",
-          text: "Mail ou mot de passe incorrect",
-          color: "text-red-500"
-        }
-      });
-}
+
+
 </script>
