@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import {auth, db} from "@/firebase";
+import {auth, db} from "@/firebase.js";
 import { ref } from "vue";
 import {collection, doc, deleteDoc, getDocs, setDoc} from "firebase/firestore";
 
