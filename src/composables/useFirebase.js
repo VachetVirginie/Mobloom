@@ -54,15 +54,29 @@ export default () => {
 
     const getDatas = async () => {
         const querySnapshot = await getDocs(collection(db, "users"));
+        const filteredDatas = [];
+
         querySnapshot.forEach((doc) => {
             if (doc.data().user === auth.currentUser.email) {
                 const dataWithId = doc.data();
-                dataWithId.id = doc.id
-                datas.value.push(dataWithId);
-                areDatasLoaded.value = true;
+                dataWithId.id = doc.id;
+                filteredDatas.push(dataWithId);
             }
         });
-    }
+
+        const sortedDatas = filteredDatas.sort((a, b) => {
+            if (a.siteTitle < b.siteTitle) {
+                return -1;
+            } else if (a.siteTitle > b.siteTitle) {
+                return 1;
+            } else {
+                return 0;
+            }
+        });
+
+        datas.value = sortedDatas;
+        areDatasLoaded.value = true;
+    };
 
     const createDoc = (creatingName, creatingIdentifiant, creatingPassword) => {
         try {

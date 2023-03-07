@@ -3,7 +3,7 @@
     <div v-if="areDatasLoaded" class="text-gray-200 body-font bg-primary h-full py-4 px-2">
       <h1 class="text-center text-4xl mb-4">Mes datas</h1>
       <div class="relative overflow-x-auto rounded">
-        <table class="w-full text-sm text-left text-gray-500">
+        <table class="w-full text-sm text-left text-gray-500 table-auto">
           <thead class="text-xs text-gray-700 uppercase bg-gray-200">
           <tr>
             <th scope="col" class="px-6 py-3">
