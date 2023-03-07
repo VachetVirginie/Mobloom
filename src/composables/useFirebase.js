@@ -1,7 +1,7 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import {auth, db} from "@/firebase";
 import { ref } from "vue";
-import {collection, doc, getDocs, setDoc} from "firebase/firestore";
+import {collection, doc, deleteDoc, getDocs, setDoc} from "firebase/firestore";
 
 export default () => {
 
@@ -16,6 +16,7 @@ export default () => {
 
     const datas = ref([]);
     const areDatasLoaded = ref(false);
+    const docId = ref("");
 
     const createUser = () =>{
         createUserWithEmailAndPassword(auth, user.value, password.value)
@@ -55,7 +56,9 @@ export default () => {
         const querySnapshot = await getDocs(collection(db, "users"));
         querySnapshot.forEach((doc) => {
             if (doc.data().user === auth.currentUser.email) {
-                datas.value.push(doc.data());
+                const dataWithId = doc.data();
+                dataWithId.id = doc.id
+                datas.value.push(dataWithId);
                 areDatasLoaded.value = true;
             }
         });
@@ -92,16 +95,40 @@ export default () => {
         }
     }
 
+    const deleteSelectedDoc = (id) => {
+        try {
+            deleteDoc(doc(db, "users", id))
+                .then(() => {
+                    action.value = {
+                        isActive: true,
+                        title: "Supprimé",
+                        text: "Votre element a été supprimé avec succès",
+                        color: "text-green-500"
+                    }
+                    window.location.reload()
+                })
+        } catch (e) {
+            console.error("Error adding document: ", e);
+            action.value = {
+                isActive: true,
+                title: "Erreur",
+                text: "Une erreur est survenue lors de la suppression de votre element",
+                color: "text-red-500"
+            }
+        }
+    }
 
     return {
         createDoc,
         createUser,
+        deleteSelectedDoc,
         getDatas,
         loginUser,
 
         action,
         areDatasLoaded,
         datas,
+        docId,
         identifiant,
         password,
         user
