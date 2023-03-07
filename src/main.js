@@ -20,7 +20,7 @@ const routes = [
         name: 'Home',
         component: HomePage,
         meta: {
-            autenticado: true
+            authenticated: true
         }
     },
     {
