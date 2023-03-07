@@ -46,27 +46,16 @@
 </template>
 
 <script setup>
-import { collection, getDocs } from "firebase/firestore";
 import LoaderBase from "@/components/Base/LoaderBase";
 import usePassword from "@/composables/usePassword";
+import useFirebase from "@/composables/useFirebase";
 
-import {db} from "@/firebase";
-import { auth } from "@/firebase";
-import {onMounted, ref} from "vue";
+import {onMounted} from "vue";
 
-const datas = ref([]);
+const { getDatas, areDatasLoaded, datas } = useFirebase()
 const { copy } = usePassword();
-const areDatasLoaded = ref(false);
 
-const getDatas = async () => {
-  const querySnapshot = await getDocs(collection(db, "users"));
-  querySnapshot.forEach((doc) => {
-    if (doc.data().user === auth.currentUser.email) {
-      datas.value.push(doc.data());
-      areDatasLoaded.value = true;
-    }
-  });
-}
+
 const onCopy = (data) => {
   copy(data)
 }

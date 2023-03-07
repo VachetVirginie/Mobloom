@@ -1,7 +1,7 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import {auth, db} from "@/firebase";
 import { ref } from "vue";
-import { doc, setDoc } from "firebase/firestore";
+import {collection, doc, getDocs, setDoc} from "firebase/firestore";
 
 export default () => {
 
@@ -13,6 +13,9 @@ export default () => {
         text: "",
         color: ""
     });
+
+    const datas = ref([]);
+    const areDatasLoaded = ref(false);
 
     const createUser = () =>{
         createUserWithEmailAndPassword(auth, user.value, password.value)
@@ -46,6 +49,16 @@ export default () => {
                     color: "text-red-500"
                 }
             });
+    }
+
+    const getDatas = async () => {
+        const querySnapshot = await getDocs(collection(db, "users"));
+        querySnapshot.forEach((doc) => {
+            if (doc.data().user === auth.currentUser.email) {
+                datas.value.push(doc.data());
+                areDatasLoaded.value = true;
+            }
+        });
     }
 
     const createDoc = (creatingName, creatingIdentifiant, creatingPassword) => {
@@ -83,9 +96,12 @@ export default () => {
     return {
         createDoc,
         createUser,
+        getDatas,
         loginUser,
 
         action,
+        areDatasLoaded,
+        datas,
         identifiant,
         password,
         user
