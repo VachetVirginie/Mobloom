@@ -29,8 +29,8 @@ const routes = [
         component: AddPage
     },
     {
-        path: '/datas',
-        name: 'Datas',
+        path: '/strongBox',
+        name: 'StrongBox',
         component: DatasPage
     }
 ]
