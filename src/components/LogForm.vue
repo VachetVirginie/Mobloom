@@ -3,7 +3,7 @@
     <AlertBase v-if="action.isActive" :title="action.title" :text="action.text" :color="action.color"/>
     <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen sm:h-full h-screen lg:py-0">
       <a href="#" class="flex items-center mb-6 text-4xl font-semibold text-secondary">
-        <img class="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo">
+        <img class="w-8 h-8 mr-2" src="@/assets/psw.png" alt="logo Mobloom">
         Mobloom
       </a>
       <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 bg-secondary">
