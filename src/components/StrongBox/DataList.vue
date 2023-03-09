@@ -2,6 +2,9 @@
   <section>
     <div v-if="areDatasLoaded" class="text-gray-200 body-font bg-primary h-full py-4 px-2">
       <h1 class="text-center text-4xl mb-4">Mes datas</h1>
+      <div class="flex justify-center mb-4">
+        <input v-model="searchTerm" class="px-4 py-2 border rounded-lg w-96 text-gray-700" type="text" placeholder="Rechercher...">
+      </div>
       <div class="relative overflow-x-auto rounded">
         <table class="w-full text-sm text-left text-gray-500">
           <thead class="text-xs text-gray-700 uppercase bg-gray-200">
@@ -58,10 +61,11 @@ import LoaderBase from "@/components/Base/LoaderBase";
 import usePassword from "@/composables/usePassword";
 import useFirebase from "@/composables/useFirebase";
 
-import { onMounted } from "vue";
+import { onMounted, ref, watch } from "vue";
 
 const { getDatas, areDatasLoaded, datas, deleteSelectedDoc } = useFirebase()
 const { copy } = usePassword();
+const searchTerm = ref('')
 
 
 const onCopy = (data) => {
@@ -75,6 +79,16 @@ const onDelete = (data) => {
 const decodedPassword =  (encodedPassword) => {
   return window.atob(encodedPassword)
 }
+
+watch(searchTerm, (value) => {
+  if (value !== "") {
+    datas.value = datas.value.filter((data) => {
+      return data.siteTitle.toLowerCase().includes(value.toLowerCase())
+    })
+  } else {
+    getDatas()
+  }
+})
 
 onMounted(() => {
   getDatas();
