@@ -66,10 +66,10 @@ const show = ref(true);
 const onGeneratePassword = () => {
   generatePassword(password);
   creatingPassword.value = password.value
-}
+  }
 
 const onCreateDoc = () => {
-  createDoc(creatingName.value, creatingIdentifiant.value, creatingPassword.value);
+  createDoc(creatingName.value, creatingIdentifiant.value, window.btoa(creatingPassword.value));
 }
 
 </script>
