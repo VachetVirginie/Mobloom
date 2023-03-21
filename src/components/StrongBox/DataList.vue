@@ -6,8 +6,8 @@
         <input v-model="searchTerm" class="px-4 py-2 border rounded-lg w-96 text-gray-700" type="text" placeholder="Rechercher...">
       </div>
       <table v-for="data in datas" :key="data" class="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5">
-        <thead class="text-gray-700">
-        <tr class="bg-gray-200 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+        <thead class="text-gray-300">
+        <tr class="bg-gray-800 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
           <th class="p-3 text-left">Nom</th>
           <th class="p-3 text-left">Email</th>
           <th class="p-3 text-left">Mot de passe</th>
