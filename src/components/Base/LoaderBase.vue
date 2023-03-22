@@ -1,7 +1,7 @@
 <template>
-  <div class="flex items-center justify-center space-x-2 bg-primary h-screen">
-    <div class="w-4 h-4 rounded-full animate-pulse bg-pink" />
-    <div class="w-4 h-4 rounded-full animate-pulse bg-pink" />
-    <div class="w-4 h-4 rounded-full animate-pulse bg-pink" />
+  <div class="flex h-screen items-center justify-center space-x-2 bg-primary">
+    <div class="h-4 w-4 animate-pulse rounded-full bg-pink" />
+    <div class="h-4 w-4 animate-pulse rounded-full bg-pink" />
+    <div class="h-4 w-4 animate-pulse rounded-full bg-pink" />
   </div>
 </template>

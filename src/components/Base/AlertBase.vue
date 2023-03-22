@@ -1,7 +1,7 @@
 <template>
   <div
     role="alert"
-    class="rounded-xl border border-gray-100 p-4 shadow-xl bg-secondary w-1/2 mx-auto"
+    class="mx-auto w-1/2 rounded-xl border border-gray-100 bg-secondary p-4 shadow-xl"
   >
     <div class="flex items-start gap-4">
       <span :class="color">

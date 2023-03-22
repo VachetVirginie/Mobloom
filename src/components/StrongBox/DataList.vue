@@ -4,13 +4,13 @@
       v-if="areDatasLoaded"
       class="m-2"
     >
-      <h1 class="text-center text-white text-4xl mb-4">
+      <h1 class="mb-4 text-center text-4xl text-white">
         Mon coffre
       </h1>
-      <div class="flex justify-center mb-4 mt-4">
+      <div class="my-4 flex justify-center">
         <input
           v-model="searchTerm"
-          class="px-4 py-2 border rounded-lg w-96 text-gray-700"
+          class="w-96 rounded-lg border px-4 py-2 text-gray-700"
           type="text"
           placeholder="Rechercher..."
         >
@@ -18,10 +18,10 @@
       <table
         v-for="data in datas"
         :key="data"
-        class="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5"
+        class="my-5 flex w-full flex-row overflow-hidden rounded-lg sm:bg-white sm:shadow-lg"
       >
         <thead class="text-gray-300">
-          <tr class="bg-gray-800 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+          <tr class="mb-2 flex flex-col rounded-l-lg bg-gray-800 sm:mb-0 sm:table-row sm:rounded-none">
             <th class="p-3 text-left">
               Nom
             </th>
@@ -40,11 +40,11 @@
           </tr>
         </thead>
         <tbody class="flex-1 sm:flex-none">
-          <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
-            <td class="border-grey-light border bg-white hover:bg-gray-100 p-3">
+          <tr class="mb-2 flex flex-col sm:mb-0 sm:table-row">
+            <td class="border bg-white p-3 hover:bg-gray-100">
               {{ data.siteTitle }}
             </td>
-            <td class="border-grey-light border bg-white hover:bg-gray-100 p-3">
+            <td class="border bg-white p-3 hover:bg-gray-100">
               <p class="flex">
                 {{ data.auth }}
                 <svg
@@ -53,7 +53,7 @@
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  class="w-4 h-4"
+                  class="h-4 w-4"
                   @click="onCopy(data.auth)"
                 >
                   <path
@@ -64,7 +64,7 @@
                 </svg>
               </p>
             </td>
-            <td class="border-grey-light border hover:bg-gray-100 p-3 bg-white truncate">
+            <td class="truncate border bg-white p-3 hover:bg-gray-100">
               <p class="flex">
                 {{ decodedPassword(data.psw) }}
                 <svg
@@ -73,7 +73,7 @@
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  class="w-4 h-4"
+                  class="h-4 w-4"
                   @click="onCopy(data.psw)"
                 >
                   <path
@@ -84,7 +84,7 @@
                 </svg>
               </p>
             </td>
-            <td class="border-grey-light border hover:bg-gray-100 p-3 bg-white text-pink hover:text-red-600 hover:font-medium cursor-pointer">
+            <td class="cursor-pointer border bg-white p-3 text-pink hover:bg-gray-100 hover:font-medium hover:text-red-600">
               <span @click="onDelete(data)">
                 Delete
               </span>

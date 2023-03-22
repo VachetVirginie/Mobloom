@@ -1,28 +1,28 @@
 <template>
-  <section class="text-gray-200 body-font">
+  <section class="text-gray-200">
     <AlertBase
       v-if="action.isActive"
       :title="action.title"
       :text="action.text"
       :color="action.color"
     />
-    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-white">
+    <div class="mx-auto flex flex-col items-center justify-center px-6 py-8 md:h-screen lg:py-0">
+      <h1 class="mb-4 text-3xl font-medium text-white sm:text-4xl">
         Ajouter un element
       </h1>
-      <div class="w-full bg-secondary rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:border-gray-700">
-        <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+      <div class="w-full rounded-lg bg-secondary shadow dark:border dark:border-gray-700 sm:max-w-md md:mt-0 xl:p-0">
+        <div class="space-y-4 p-6 sm:p-8 md:space-y-6">
           <div>
             <label
               for="creatingName"
-              class="block mb-2 text-sm font-medium text-gray-900"
+              class="mb-2 block text-sm font-medium text-gray-900"
             >Nom</label>
             <input
               id="creatingName"
               v-model="creatingName"
               type="text"
               name="creatingName"
-              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 bg-grey placeholder-gray-500"
+              class="block w-full rounded-lg border border-gray-300 bg-grey p-2.5 text-gray-900 placeholder:text-gray-500 sm:text-sm"
               placeholder="nom site"
               required=""
             >
@@ -30,14 +30,14 @@
           <div>
             <label
               for="creatingIdentifiant"
-              class="block mb-2 text-sm font-medium text-gray-900"
+              class="mb-2 block text-sm font-medium text-gray-900"
             >Identifiant</label>
             <input
               id="creatingIdentifiant"
               v-model="creatingIdentifiant"
               type="email"
               name="creatingIdentifiant"
-              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 bg-grey placeholder-gray-500"
+              class="block w-full rounded-lg border border-gray-300 bg-grey p-2.5 text-gray-900 placeholder:text-gray-500 sm:text-sm"
               placeholder="identifiant"
               required=""
             >
@@ -45,9 +45,9 @@
           <div>
             <label
               for="password"
-              class="block mb-2 text-sm font-medium text-gray-900 relative"
+              class="relative mb-2 block text-sm font-medium text-gray-900"
             >
-              <div class="pb-2 flex gap-2">
+              <div class="flex gap-2 pb-2">
                 Password
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -55,7 +55,7 @@
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  class="w-5 h-5"
+                  class="h-5 w-5"
                   @click="onGeneratePassword"
                 >
                   <path
@@ -72,7 +72,7 @@
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 stroke="currentColor"
-                class="w-6 h-6 absolute right-3 mt-2"
+                class="absolute right-3 mt-2 h-6 w-6"
                 @click="show = !show"
               >
                 <path
@@ -93,7 +93,7 @@
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 stroke="currentColor"
-                class="w-6 h-6 absolute right-3 mt-2"
+                class="absolute right-3 mt-2 h-6 w-6"
                 @click="show = !show"
               >
                 <path
@@ -107,7 +107,7 @@
                 v-model="creatingPassword"
                 :type="show ? 'password' : 'text'"
                 name="password"
-                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 bg-grey placeholder-gray-500"
+                class="block w-full rounded-lg border border-gray-300 bg-grey p-2.5 text-gray-900 placeholder:text-gray-500 sm:text-sm"
                 placeholder="password"
                 required=""
               >
