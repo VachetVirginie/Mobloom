@@ -26,12 +26,12 @@
             label="Your email"
             placeholder="name@company.com"
           />
-            <InputBase
-              v-model="password"
-              type="password"
-              label="Your password"
-              placeholder="••••••••"
-            />
+          <InputBase
+            v-model="password"
+            type="password"
+            label="Your password"
+            placeholder="••••••••"
+          />
           <div class="flex justify-center gap-4">
             <ButtonBase
               color="bg-pink"

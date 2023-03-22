@@ -13,34 +13,20 @@
       <div class="w-full rounded-lg bg-secondary shadow dark:border dark:border-gray-700 sm:max-w-md md:mt-0 xl:p-0">
         <div class="space-y-4 p-6 sm:p-8 md:space-y-6">
           <div>
-            <label
-              for="creatingName"
-              class="mb-2 block text-sm font-medium text-gray-900"
-            >Nom</label>
-            <input
-              id="creatingName"
+            <InputBase
               v-model="creatingName"
               type="text"
-              name="creatingName"
-              class="block w-full rounded-lg border border-gray-300 bg-grey p-2.5 text-gray-900 placeholder:text-gray-500 sm:text-sm"
+              label="Nom"
               placeholder="nom site"
-              required=""
-            >
+            />
           </div>
           <div>
-            <label
-              for="creatingIdentifiant"
-              class="mb-2 block text-sm font-medium text-gray-900"
-            >Identifiant</label>
-            <input
-              id="creatingIdentifiant"
+            <InputBase
               v-model="creatingIdentifiant"
-              type="email"
-              name="creatingIdentifiant"
-              class="block w-full rounded-lg border border-gray-300 bg-grey p-2.5 text-gray-900 placeholder:text-gray-500 sm:text-sm"
+              type="text"
+              label="Identifiant"
               placeholder="identifiant"
-              required=""
-            >
+            />
           </div>
           <div>
             <label
@@ -132,6 +118,7 @@ import useFirebase from "@/composables/useFirebase";
 import usePassword from "@/composables/usePassword";
 import ButtonBase from "@/components/Base/ButtonBase";
 import AlertBase from "@/components/Base/AlertBase";
+import InputBase from "@/components/Base/InputBase";
 
 const { generatePassword } = usePassword();
 const { createDoc, password  } = useFirebase();
