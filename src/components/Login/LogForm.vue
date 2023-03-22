@@ -20,36 +20,18 @@
       </a>
       <div class="w-full rounded-lg bg-white shadow dark:border sm:max-w-md md:mt-0 xl:p-0">
         <div class="space-y-4 p-6 sm:p-8 md:space-y-6">
-          <div>
-            <label
-              for="email"
-              class="mb-2 block text-sm font-medium text-gray-900"
-            >Your email</label>
-            <input
-              id="email"
-              v-model="user"
-              type="email"
-              name="email"
-              class="block w-full rounded-lg bg-gray-50 p-2.5 text-gray-900 dark:border-gray-600 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-sm"
-              placeholder="name@company.com"
-              required=""
-            >
-          </div>
-          <div>
-            <label
-              for="password"
-              class="mb-2 block text-sm font-medium text-gray-900"
-            >Password</label>
-            <input
-              id="password"
+          <InputBase
+            v-model="user"
+            type="text"
+            label="Your email"
+            placeholder="name@company.com"
+          />
+            <InputBase
               v-model="password"
               type="password"
-              name="password"
+              label="Your password"
               placeholder="••••••••"
-              class="block w-full rounded-lg bg-gray-50 p-2.5 text-gray-900 dark:border-gray-600 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-sm"
-              required=""
-            >
-          </div>
+            />
           <div class="flex justify-center gap-4">
             <ButtonBase
               color="bg-pink"
@@ -72,6 +54,7 @@
 import useFirebase from "@/composables/useFirebase";
 import ButtonBase from "@/components/Base/ButtonBase";
 import AlertBase from "@/components/Base/AlertBase";
+import InputBase from "@/components/Base/InputBase";
 
 const { createUser, loginUser, password, user, action } = useFirebase();
 
