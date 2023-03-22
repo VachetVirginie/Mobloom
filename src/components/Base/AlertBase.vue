@@ -55,8 +55,20 @@
 import { defineProps } from 'vue'
 
 defineProps({
-  title: String,
-  text: String,
-  color: String
+  title:{
+    type: String,
+    default: 'Title',
+    required: true
+  },
+  text:{
+    type: String,
+    default: 'Text',
+    required: true
+  },
+  color:{
+    type: String,
+    default: 'bg-gray-300',
+    required: true
+  }
 })
 </script>

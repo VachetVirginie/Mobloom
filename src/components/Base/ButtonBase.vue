@@ -11,8 +11,14 @@
 import { defineProps } from 'vue'
 
 defineProps({
-  color: String,
-  text: String
+  color: {
+    type: String,
+    default: 'bg-primary',
+  },
+  text: {
+    type: String,
+    default: 'Button',
+  },
 })
 
 
