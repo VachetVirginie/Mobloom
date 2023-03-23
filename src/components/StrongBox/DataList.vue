@@ -74,7 +74,7 @@
                   stroke-width="1.5"
                   stroke="currentColor"
                   class="h-4 w-4"
-                  @click="onCopy(data.psw)"
+                  @click="onCopy(decodedPassword(data.psw))"
                 >
                   <path
                     stroke-linecap="round"
@@ -105,12 +105,12 @@ import useFirebase from "@/composables/useFirebase";
 import { onMounted, ref, watch } from "vue";
 
 const { getDatas, areDatasLoaded, datas, deleteSelectedDoc } = useFirebase()
-const { copy } = usePassword();
+const { copyToClipboard } = usePassword();
 const searchTerm = ref('')
 
 
 const onCopy = (data) => {
-  copy(data)
+  copyToClipboard(data)
 }
 
 const onDelete = (data) => {
