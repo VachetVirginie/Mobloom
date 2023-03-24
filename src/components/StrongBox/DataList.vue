@@ -4,11 +4,12 @@
       v-if="areDatasLoaded"
       class="m-2"
     >
-      <h1 class="mb-4 text-center text-4xl text-white">
+      <h1 data-aos="zoom-in" class="mb-4 text-center text-4xl text-white">
         Mon coffre
       </h1>
       <div class="my-4 flex justify-center">
         <input
+          data-aos="zoom-in"
           v-model="searchTerm"
           class="w-96 rounded-lg border px-4 py-2 text-gray-700"
           type="text"
@@ -16,9 +17,10 @@
         >
       </div>
       <table
-        v-for="data in datas"
+        v-for="(data, index) in datas"
         :key="data"
         class="my-5 flex w-full flex-row overflow-hidden rounded-lg sm:bg-white sm:shadow-lg"
+        :data-aos="index%2 === 0 ? 'fade-right' : 'fade-left'"
       >
         <thead class="text-gray-300">
           <tr class="mb-2 flex flex-col rounded-l-lg bg-gray-800 sm:mb-0 sm:table-row sm:rounded-none">

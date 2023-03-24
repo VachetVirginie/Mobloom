@@ -6,7 +6,7 @@
       :text="action.text"
       :color="action.color"
     />
-    <div class="mx-auto flex flex-col items-center justify-center px-6 py-8 md:h-screen lg:py-0">
+    <div data-aos="zoom-in" class="mx-auto flex flex-col items-center justify-center px-6 py-8 md:h-screen lg:py-0">
       <h1 class="mb-4 text-3xl font-medium text-white sm:text-4xl">
         Ajouter un element
       </h1>

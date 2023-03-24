@@ -8,6 +8,8 @@ import AddPage from '@/views/AddPage.vue'
 import LogPage from "@/views/LogPage";
 import DatasPage from "@/views/StrongboxPage";
 import './assets/tailwind.css'
+import 'aos/dist/aos.css'
+import aos from '@/composables/useAos'
 
 const routes = [
     {
@@ -45,7 +47,8 @@ onAuthStateChanged(auth, (user) => {
     }
 });
 
+
 const app = createApp(App);
 app.use(router);
-
+app.use(aos);
 app.mount('#app');

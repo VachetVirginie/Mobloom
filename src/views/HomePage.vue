@@ -1,5 +1,5 @@
 <template>
-  <HeroSection />
+  <HeroSection data-aos="zoom-in" />
 </template>
 <script>
 import HeroSection from "@/components/Hero/HeroSection";
