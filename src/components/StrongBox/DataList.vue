@@ -100,11 +100,11 @@
 <script setup>
 import LoaderBase from "@/components/Base/LoaderBase";
 import usePassword from "@/composables/usePassword";
-import useFirebase from "@/composables/useFirebase";
+import useFirestore from "@/composables/useFirestore";
 
 import { onMounted, ref, watch } from "vue";
 
-const { getDatas, areDatasLoaded, datas, deleteSelectedDoc } = useFirebase()
+const { getDatas, areDatasLoaded, datas, deleteSelectedDoc } = useFirestore()
 const { copyToClipboard } = usePassword();
 const searchTerm = ref('')
 

@@ -51,12 +51,12 @@
 </template>
 
 <script setup>
-import useFirebase from "@/composables/useFirebase";
+import useFirestore from "@/composables/useFirestore";
 import ButtonBase from "@/components/Base/ButtonBase";
 import AlertBase from "@/components/Base/AlertBase";
 import InputBase from "@/components/Base/InputBase";
 
-const { createUser, loginUser, password, user, action } = useFirebase();
+const { createUser, loginUser, password, user, action } = useFirestore();
 
 const onCreateUser = () => {
   createUser();

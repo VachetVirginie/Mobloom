@@ -114,14 +114,14 @@
 
 <script setup>
 import { ref } from "vue";
-import useFirebase from "@/composables/useFirebase";
+import useFirestore from "@/composables/useFirestore";
 import usePassword from "@/composables/usePassword";
 import ButtonBase from "@/components/Base/ButtonBase";
 import AlertBase from "@/components/Base/AlertBase";
 import InputBase from "@/components/Base/InputBase";
 
 const { generatePassword } = usePassword();
-const { createDoc, password  } = useFirebase();
+const { createDoc, password  } = useFirestore();
 
 const creatingName = ref("");
 const creatingIdentifiant = ref("");

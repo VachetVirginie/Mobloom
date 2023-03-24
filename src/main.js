@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import { auth } from "@/firebase";
+import { auth } from "@/composables/useFirebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { createRouter, createWebHistory } from "vue-router"
 import App from './App.vue'

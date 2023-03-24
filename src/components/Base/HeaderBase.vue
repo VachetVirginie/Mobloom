@@ -73,7 +73,7 @@
 
 <script setup>
 import { signOut } from "firebase/auth";
-import { auth } from "@/firebase";
+import { auth } from "@/composables/useFirebase";
 import { useRouter } from 'vue-router';
 import { computed, ref } from "vue";
 
