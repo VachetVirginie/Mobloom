@@ -2,14 +2,16 @@ import { createApp } from 'vue'
 import { auth } from "@/composables/useFirebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { createRouter, createWebHistory } from "vue-router"
-import App from './App.vue'
-import HomePage from '@/views/HomePage.vue'
+
 import AddPage from '@/views/AddPage.vue'
-import LogPage from "@/views/LogPage";
+import App from './App.vue'
+import Aos from '@/composables/useAos'
 import DatasPage from "@/views/StrongboxPage";
+import HomePage from '@/views/HomePage.vue'
+import LogPage from "@/views/LogPage";
+
 import './assets/tailwind.css'
 import 'aos/dist/aos.css'
-import aos from '@/composables/useAos'
 
 const routes = [
     {
@@ -50,5 +52,5 @@ onAuthStateChanged(auth, (user) => {
 
 const app = createApp(App);
 app.use(router);
-app.use(aos);
+app.use(Aos);
 app.mount('#app');
